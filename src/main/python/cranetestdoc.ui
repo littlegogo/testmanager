@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CraneTestDocWnd</class>
+ <widget class="QDialog" name="CraneTestDocWnd">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1152</width>
+    <height>880</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>配置项测试工具</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>用例列表</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QTreeWidget" name="testcase_tree">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::EditKeyPressed</set>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="columnCount">
+          <number>3</number>
+         </property>
+         <column>
+          <property name="text">
+           <string>用例标识</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>用例名称</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>id</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="selectall_checkbox">
+         <property name="text">
+          <string>全选</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QTabWidget" name="test_tabwidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="test_result_tab">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <attribute name="title">
+        <string>用例+测试结果</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QGroupBox" name="testSpecGroup">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="title">
+             <string>用例信息</string>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+            <layout class="QGridLayout" name="gridLayout">
+             <property name="sizeConstraint">
+              <enum>QLayout::SetNoConstraint</enum>
+             </property>
+             <item row="13" column="3">
+              <widget class="QLabel" name="label_23">
+               <property name="text">
+                <string>合格性方法</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>系统准备</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="test_caseidentify_edit"/>
+             </item>
+             <item row="13" column="1" colspan="2">
+              <widget class="QComboBox" name="test_env_combox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+             <item row="10" column="0">
+              <widget class="QLabel" name="label_9">
+               <property name="text">
+                <string>评估准则</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="4" colspan="2">
+              <widget class="QLineEdit" name="test_item_edit"/>
+             </item>
+             <item row="3" column="1" colspan="10">
+              <widget class="QLineEdit" name="precondation_edit">
+               <property name="text">
+                <string>无</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="10">
+              <widget class="QLineEdit" name="require_trace_edit">
+               <property name="text">
+                <string>无</string>
+               </property>
+              </widget>
+             </item>
+             <item row="13" column="4">
+              <widget class="QComboBox" name="qualified_method_combox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="label_8">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;测试方法&lt;/p&gt;&lt;p&gt;测试结果&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1" colspan="10">
+              <widget class="QLineEdit" name="test_input_edit">
+               <property name="text">
+                <string>无</string>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1" rowspan="4" colspan="10">
+              <widget class="QTableWidget" name="test_procedure_tabel">
+               <property name="alternatingRowColors">
+                <bool>true</bool>
+               </property>
+               <attribute name="horizontalHeaderCascadingSectionResizes">
+                <bool>false</bool>
+               </attribute>
+               <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                <bool>false</bool>
+               </attribute>
+               <attribute name="horizontalHeaderStretchLastSection">
+                <bool>false</bool>
+               </attribute>
+               <attribute name="verticalHeaderVisible">
+                <bool>false</bool>
+               </attribute>
+               <row>
+                <property name="text">
+                 <string>New Row</string>
+                </property>
+               </row>
+               <row>
+                <property name="text">
+                 <string>New Row</string>
+                </property>
+               </row>
+               <row>
+                <property name="text">
+                 <string>New Row</string>
+                </property>
+               </row>
+               <column>
+                <property name="text">
+                 <string>序号</string>
+                </property>
+                <property name="textAlignment">
+                 <set>AlignCenter</set>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>测试步骤</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>预期结果</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>测试结果</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>数据分析</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>问题描述</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>备注</string>
+                </property>
+               </column>
+               <item row="0" column="0">
+                <property name="text">
+                 <string>1</string>
+                </property>
+               </item>
+               <item row="0" column="1">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="0" column="2">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="0" column="3">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="0" column="4">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="0" column="5">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="0" column="6">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="1" column="0">
+                <property name="text">
+                 <string>2</string>
+                </property>
+               </item>
+               <item row="1" column="1">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="1" column="2">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="1" column="3">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="1" column="4">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="1" column="5">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="1" column="6">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="2" column="0">
+                <property name="text">
+                 <string>3</string>
+                </property>
+               </item>
+               <item row="2" column="1">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="2" column="2">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="2" column="3">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="2" column="4">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="2" column="5">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+               <item row="2" column="6">
+                <property name="text">
+                 <string>无</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item row="1" column="1" colspan="10">
+              <widget class="QLineEdit" name="test_content_edit"/>
+             </item>
+             <item row="10" column="1" colspan="10">
+              <widget class="QLineEdit" name="estimate_rule_eidt">
+               <property name="text">
+                <string>测试结果与预期结果一致</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="6">
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>测试类别</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="8">
+              <widget class="QComboBox" name="test_cat_combox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="editable">
+                <bool>true</bool>
+               </property>
+               <property name="duplicatesEnabled">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>用例标识</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="9">
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>需求追溯</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>前提约束</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QLabel" name="label_12">
+               <property name="text">
+                <string>用例名称</string>
+               </property>
+              </widget>
+             </item>
+             <item row="13" column="0">
+              <widget class="QLabel" name="label_10">
+               <property name="text">
+                <string>测试环境</string>
+               </property>
+              </widget>
+             </item>
+             <item row="8" column="0">
+              <widget class="QPushButton" name="remove_procdure_button">
+               <property name="text">
+                <string>删除步骤</string>
+               </property>
+               <property name="icon">
+                <iconset resource="cranetestdoc.qrc">
+                 <normaloff>:/image/image/iconfinder_minus-circle_2561243.png</normaloff>:/image/image/iconfinder_minus-circle_2561243.png</iconset>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="0">
+              <widget class="QPushButton" name="add_procedure_button">
+               <property name="text">
+                <string>添加步骤</string>
+               </property>
+               <property name="icon">
+                <iconset resource="cranetestdoc.qrc">
+                 <normaloff>:/image/image/iconfinder_circle-add_226591.png</normaloff>:/image/image/iconfinder_circle-add_226591.png</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>16</width>
+                 <height>16</height>
+                </size>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="label_7">
+               <property name="text">
+                <string>测试输入</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1" colspan="10">
+              <widget class="QLineEdit" name="sys_prepare_edit">
+               <property name="text">
+                <string>无</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>测试内容</string>
+               </property>
+              </widget>
+             </item>
+             <item row="13" column="6">
+              <widget class="QLabel" name="label_24">
+               <property name="text">
+                <string>安全保密</string>
+               </property>
+              </widget>
+             </item>
+             <item row="13" column="8" colspan="3">
+              <widget class="QLineEdit" name="safe_secret_edit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>无</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="testReportGroup">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="title">
+             <string>测试结果附加信息</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_2">
+             <item row="0" column="6" colspan="2">
+              <widget class="QLabel" name="label_13">
+               <property name="text">
+                <string>测试时间</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="7" colspan="2">
+              <widget class="QLineEdit" name="correct_sheet_edit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>无</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QLineEdit" name="test_person_join_edit">
+               <property name="text">
+                <string>无</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QLabel" name="label_15">
+               <property name="text">
+                <string>参加人员</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QLabel" name="label_17">
+               <property name="text">
+                <string>问题单号</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_16">
+               <property name="text">
+                <string>测试数据</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="6">
+              <widget class="QLabel" name="label_18">
+               <property name="text">
+                <string>更改单号</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="test_data_edit">
+               <property name="text">
+                <string>无</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="8">
+              <widget class="QDateTimeEdit" name="test_date_timepickedit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="displayFormat">
+                <string>yyyy-MM-dd</string>
+               </property>
+               <property name="calendarPopup">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QComboBox" name="test_person_combox">
+               <property name="editable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_14">
+               <property name="text">
+                <string>测试人员</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="3">
+              <widget class="QLineEdit" name="problem_sheet_edit">
+               <property name="text">
+                <string>无</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_11">
+               <property name="text">
+                <string>测试差异</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1" colspan="4">
+              <widget class="QLineEdit" name="test_diff_edit">
+               <property name="text">
+                <string>无</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetMaximumSize</enum>
+     </property>
+     <item>
+      <widget class="QProgressBar" name="process_progressbar">
+       <property name="value">
+        <number>24</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="add_test_case_button">
+       <property name="text">
+        <string>添加/更新用例</string>
+       </property>
+       <property name="icon">
+        <iconset resource="cranetestdoc.qrc">
+         <normaloff>:/image/image/iconfinder_network_sans_add_103649.png</normaloff>:/image/image/iconfinder_network_sans_add_103649.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="remove_test_case_button">
+       <property name="text">
+        <string>删除所选用例</string>
+       </property>
+       <property name="icon">
+        <iconset resource="cranetestdoc.qrc">
+         <normaloff>:/image/image/iconfinder_UI_Basic_GLYPH-73_4733351.png</normaloff>:/image/image/iconfinder_UI_Basic_GLYPH-73_4733351.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="save_test_case_button">
+       <property name="text">
+        <string>导出所选用例</string>
+       </property>
+       <property name="icon">
+        <iconset resource="cranetestdoc.qrc">
+         <normaloff>:/image/image/iconfinder_export-share-upload_2931143.png</normaloff>:/image/image/iconfinder_export-share-upload_2931143.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="import_case_button">
+       <property name="text">
+        <string>导入用例</string>
+       </property>
+       <property name="icon">
+        <iconset resource="cranetestdoc.qrc">
+         <normaloff>:/image/image/iconfinder_import-download-save_2931171.png</normaloff>:/image/image/iconfinder_import-download-save_2931171.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="generate_doc_button">
+       <property name="text">
+        <string>生成文档</string>
+       </property>
+       <property name="icon">
+        <iconset resource="cranetestdoc.qrc">
+         <normaloff>:/image/image/iconfinder_15_2134065.png</normaloff>:/image/image/iconfinder_15_2134065.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>test_tabwidget</tabstop>
+  <tabstop>test_caseidentify_edit</tabstop>
+  <tabstop>test_cat_combox</tabstop>
+  <tabstop>require_trace_edit</tabstop>
+  <tabstop>test_content_edit</tabstop>
+  <tabstop>sys_prepare_edit</tabstop>
+  <tabstop>precondation_edit</tabstop>
+  <tabstop>test_input_edit</tabstop>
+  <tabstop>test_procedure_tabel</tabstop>
+  <tabstop>estimate_rule_eidt</tabstop>
+  <tabstop>test_date_timepickedit</tabstop>
+  <tabstop>test_data_edit</tabstop>
+  <tabstop>correct_sheet_edit</tabstop>
+ </tabstops>
+ <resources>
+  <include location="cranetestdoc.qrc"/>
+ </resources>
+ <connections/>
+</ui>

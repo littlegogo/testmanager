@@ -1,0 +1,1 @@
+pyinstaller -F -w main.py -i ../icons/test.ico
