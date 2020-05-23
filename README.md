@@ -1,4 +1,5 @@
 # testmanager
+![image](https://user-images.githubusercontent.com/20578508/82729484-88f27600-9d2a-11ea-8031-ab947d42fcb4.png "testmanager")
 
 基于python3.7.4和pyqt5实现的配置项测试用例管理工具单机版，能够方便的对测试用例进行设计和管理。主要包括以下功能：
 
