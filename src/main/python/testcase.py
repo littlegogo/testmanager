@@ -99,6 +99,7 @@ class TestCase:
                 self.case_record_data = load_case.case_record_data
                 self.case_data_analyse = load_case.case_data_analyse
                 self.case_constraint = load_case.case_constraint
+                self.case_input = load_case.case_input
                 self.case_safe_secret = load_case.case_safe_secret
                 self.case_env = load_case.case_env
                 self.case_sys_prepare = load_case.case_sys_prepare

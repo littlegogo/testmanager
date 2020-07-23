@@ -458,7 +458,7 @@
                 <string>删除步骤</string>
                </property>
                <property name="icon">
-                <iconset resource="cranetestdoc.qrc">
+                <iconset>
                  <normaloff>:/image/image/iconfinder_minus-circle_2561243.png</normaloff>:/image/image/iconfinder_minus-circle_2561243.png</iconset>
                </property>
               </widget>
@@ -469,7 +469,7 @@
                 <string>添加步骤</string>
                </property>
                <property name="icon">
-                <iconset resource="cranetestdoc.qrc">
+                <iconset>
                  <normaloff>:/image/image/iconfinder_circle-add_226591.png</normaloff>:/image/image/iconfinder_circle-add_226591.png</iconset>
                </property>
                <property name="iconSize">
@@ -674,10 +674,10 @@
      <item>
       <widget class="QPushButton" name="add_test_case_button">
        <property name="text">
-        <string>添加/更新用例</string>
+        <string>添加/更新用例(&amp;A)</string>
        </property>
        <property name="icon">
-        <iconset resource="cranetestdoc.qrc">
+        <iconset>
          <normaloff>:/image/image/iconfinder_network_sans_add_103649.png</normaloff>:/image/image/iconfinder_network_sans_add_103649.png</iconset>
        </property>
        <property name="iconSize">
@@ -686,49 +686,67 @@
          <height>16</height>
         </size>
        </property>
+       <property name="shortcut">
+        <string>Alt+A</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="remove_test_case_button">
        <property name="text">
-        <string>删除所选用例</string>
+        <string>删除所选用例(&amp;D)</string>
        </property>
        <property name="icon">
-        <iconset resource="cranetestdoc.qrc">
+        <iconset>
          <normaloff>:/image/image/iconfinder_UI_Basic_GLYPH-73_4733351.png</normaloff>:/image/image/iconfinder_UI_Basic_GLYPH-73_4733351.png</iconset>
+       </property>
+       <property name="shortcut">
+        <string>Alt+D</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="save_test_case_button">
        <property name="text">
-        <string>导出所选用例</string>
+        <string>导出所选用例(&amp;E)</string>
        </property>
        <property name="icon">
-        <iconset resource="cranetestdoc.qrc">
+        <iconset>
          <normaloff>:/image/image/iconfinder_export-share-upload_2931143.png</normaloff>:/image/image/iconfinder_export-share-upload_2931143.png</iconset>
+       </property>
+       <property name="shortcut">
+        <string>Alt+E</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="import_case_button">
        <property name="text">
-        <string>导入用例</string>
+        <string>导入用例(&amp;I)</string>
        </property>
        <property name="icon">
-        <iconset resource="cranetestdoc.qrc">
+        <iconset>
          <normaloff>:/image/image/iconfinder_import-download-save_2931171.png</normaloff>:/image/image/iconfinder_import-download-save_2931171.png</iconset>
+       </property>
+       <property name="shortcut">
+        <string>Alt+I</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="generate_doc_button">
        <property name="text">
-        <string>生成文档</string>
+        <string>生成文档(&amp;G)</string>
        </property>
        <property name="icon">
-        <iconset resource="cranetestdoc.qrc">
+        <iconset>
          <normaloff>:/image/image/iconfinder_15_2134065.png</normaloff>:/image/image/iconfinder_15_2134065.png</iconset>
+       </property>
+       <property name="shortcut">
+        <string>Alt+G</string>
        </property>
       </widget>
      </item>
@@ -737,8 +755,10 @@
   </layout>
  </widget>
  <tabstops>
+  <tabstop>testcase_tree</tabstop>
   <tabstop>test_tabwidget</tabstop>
   <tabstop>test_caseidentify_edit</tabstop>
+  <tabstop>test_item_edit</tabstop>
   <tabstop>test_cat_combox</tabstop>
   <tabstop>require_trace_edit</tabstop>
   <tabstop>test_content_edit</tabstop>
@@ -746,13 +766,26 @@
   <tabstop>precondation_edit</tabstop>
   <tabstop>test_input_edit</tabstop>
   <tabstop>test_procedure_tabel</tabstop>
+  <tabstop>add_procedure_button</tabstop>
+  <tabstop>remove_procdure_button</tabstop>
   <tabstop>estimate_rule_eidt</tabstop>
+  <tabstop>test_env_combox</tabstop>
+  <tabstop>qualified_method_combox</tabstop>
+  <tabstop>safe_secret_edit</tabstop>
+  <tabstop>test_person_combox</tabstop>
+  <tabstop>test_person_join_edit</tabstop>
   <tabstop>test_date_timepickedit</tabstop>
   <tabstop>test_data_edit</tabstop>
+  <tabstop>problem_sheet_edit</tabstop>
   <tabstop>correct_sheet_edit</tabstop>
+  <tabstop>test_diff_edit</tabstop>
+  <tabstop>add_test_case_button</tabstop>
+  <tabstop>remove_test_case_button</tabstop>
+  <tabstop>save_test_case_button</tabstop>
+  <tabstop>import_case_button</tabstop>
+  <tabstop>generate_doc_button</tabstop>
+  <tabstop>selectall_checkbox</tabstop>
  </tabstops>
- <resources>
-  <include location="cranetestdoc.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

@@ -105,7 +105,7 @@ class CraneTestDocWnd(QDialog, Ui_CraneTestDocWnd):
             self.test_procedure_tabel.setItem(index, 0, QTableWidgetItem(item[0]))
             self.test_procedure_tabel.setItem(index, 1, QTableWidgetItem(item[1]))
             self.test_procedure_tabel.setItem(index, 2, QTableWidgetItem(item[2]))
-            self.test_procedure_tabel.setItem(index, 3, QTableWidgetItem(item[4]))
+            self.test_procedure_tabel.setItem(index, 3, QTableWidgetItem(item[3]))
             self.test_procedure_tabel.setItem(index, 4, QTableWidgetItem(item[4]))
             self.test_procedure_tabel.setItem(index, 5, QTableWidgetItem(item[5]))
             self.test_procedure_tabel.setItem(index, 6, QTableWidgetItem(item[6]))

@@ -179,7 +179,7 @@ class DocWriter:
         case_table.Cell(5, 1).Range.Text = '测试输入'
         case_table.Cell(6, 1).Range.Text = '序号'
         case_table.Cell(6, 2).Range.Text = '测试步骤'
-        case_table.Cell(6, 3).Range.Text = '测试结果'
+        case_table.Cell(6, 3).Range.Text = '预期结果'
         case_table.Cell(7 + len(test_case.case_exec_procedure), 1).Range.Text = '评估准则'
         case_table.Cell(8 + len(test_case.case_exec_procedure), 1).Range.Text = '测试环境'
 
@@ -225,8 +225,61 @@ class DocWriter:
         table_heading_pha.Range.Font.Name = '黑体'
 
 
-    def __write_report_doc(self, test_case):
+    def __write_result(self, result_list):
         # 输出用例的标题
+        result_title = self.report_doc.Paragraphs.Add()
+        result_title.Range.InsertBefore('测试结果统计')
+        # var_heading_pha.Range.Select()
+        result_title.Style = self.__get_title_(2)
+        # 输出表题
+        table_heading_pha = self.report_doc.Paragraphs.Add()
+        table_heading_pha.LineSpacing = 1.5*12
+        table_heading_pha.Alignment = constants.wdAlignParagraphCenter
+        table_heading_pha.Range.InsertCaption("表", '', '', constants.wdCaptionPositionAbove)
+        table_heading_pha.Range.InsertBefore('测试结果统计')
+        # 输出表格
+        table_pha = self.report_doc.Paragraphs.Add()
+        # 输出属性表格外边框1.5磅
+        result_table = table_pha.Range.Tables.Add(table_pha.Range, 1+len(result_list), 4)
+
+        # # 设置表格内容
+        result_table.Cell(1, 1).Range.Text = '序号'
+        result_table.Cell(1, 2).Range.Text = '用例名称'
+        result_table.Cell(1, 3).Range.Text = '用例标识'
+        result_table.Cell(1, 4).Range.Text = '测试结果'
+
+        for index, item in enumerate(result_list):
+            result_table.Cell(index + 2, 1).Range.Text = str(index + 1)
+            result_table.Cell(index + 2, 2).Range.Text = item[0]
+            result_table.Cell(index + 2, 3).Range.Text = item[1]
+            result_table.Cell(index + 2, 4).Range.Text = '通过'
+
+        # 设置表格样式及字体
+        result_table.Borders.Enable = True
+        self.__set_table_border(result_table, constants.wdLineWidth150pt, constants.wdLineWidth150pt,
+                               constants.wdLineWidth150pt, constants.wdLineWidth150pt)
+        # 先统一刷
+        result_table.Range.Font.Name = '宋体'
+        result_table.Range.Font.Name = 'Times New Roman'
+        # 设置黑体
+        result_table.Cell(1, 1).Range.Font.Name = '黑体'
+        result_table.Cell(1, 2).Range.Font.Name = '黑体'
+        result_table.Cell(1, 3).Range.Font.Name = '黑体'
+        result_table.Cell(1, 4).Range.Font.Name = '黑体'
+        
+        # 设置文本对齐
+        # case_table.Select()
+        # self.word_app.Selection.Tables(1).Rows.Alignment = constants.wdAlignRowCenter
+        # 删除题注末尾的换行符及表格说明字体
+        result_table.Select()
+        ref = self.word_app.Selection.Previous(constants.wdParagraph, 2)
+        ref.Select()
+        self.word_app.Selection.Find.Execute(FindText='^p', ReplaceWith=' ', Replace=constants.wdReplaceOne)
+        table_heading_pha.Range.Font.Size = 12
+        table_heading_pha.Range.Font.Name = '黑体'
+
+    def __write_report_doc(self, test_case):
+            # 输出用例的标题
         # test_case = TestCase()
         case_title = self.report_doc.Paragraphs.Add()
         case_title.Range.InsertBefore(f'{test_case.case_name}({test_case.case_mark})')
@@ -289,8 +342,8 @@ class DocWriter:
         # # 设置表格内容
         case_table.Cell(1, 1).Range.Text = '用例标识'
         case_table.Cell(1, 2).Range.Text = test_case.case_mark
-        case_table.Cell(1, 3).Range.Text = '用例名称'
-        case_table.Cell(1, 4).Range.Text = test_case.case_name
+        case_table.Cell(1, 3).Range.Text = '测试类别'
+        case_table.Cell(1, 4).Range.Text = self.config[TEST_CAT_KEY][test_case.case_cat]
         case_table.Cell(1, 5).Range.Text = '测试时间'
         case_table.Cell(1, 6).Range.Text = test_case.test_date
 
@@ -379,6 +432,7 @@ class DocWriter:
 
         process_progressbar.setMaximum(len(keys))
         process_progressbar.setMinimum(0)
+        result_list  = []
         try:
             for row_index, key in enumerate(keys):
                 test_case = test_cases[key]
@@ -388,9 +442,9 @@ class DocWriter:
                 self.__write_spec_doc(test_case)
                 # 写测试报告
                 self.__write_report_doc(test_case)
+                result_list.append([test_case.case_name, test_case.case_mark])
                 process_progressbar.setValue(row_index+1)
-
-
+            self.__write_result(result_list)            
         except Exception as e:
             print(f'write test case error{e}')
 
