@@ -527,3 +527,4 @@ class Ui_CraneTestDocWnd(object):
         self.import_case_button.setShortcut(_translate("CraneTestDocWnd", "Alt+I"))
         self.generate_doc_button.setText(_translate("CraneTestDocWnd", "生成文档(&G)"))
         self.generate_doc_button.setShortcut(_translate("CraneTestDocWnd", "Alt+G"))
+import icon_rc

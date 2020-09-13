@@ -65,7 +65,7 @@ class CraneTestDocWnd(QDialog, Ui_CraneTestDocWnd):
         self.testcase_tree.currentItemChanged.connect(self.on_current_changed)
     
     def closeEvent(self, event):
-        if QMessageBox.question(self, '提示', '是否退出，退出前请导出用例', QMessageBox.Yes|QMessageBox.Cancel, QMessageBox.Cancel) == QMessageBox.Yes:
+        if QMessageBox.question(self, '提示', '是否退出?退出前请导出用例', QMessageBox.Yes|QMessageBox.Cancel, QMessageBox.Cancel) == QMessageBox.Yes:
             event.accept()
         else:
             event.ignore()

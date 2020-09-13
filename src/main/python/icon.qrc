@@ -1,0 +1,12 @@
+<RCC>
+  <qresource prefix="image">
+    <file>image/iconfinder_15_2134065.png</file>
+    <file>image/iconfinder_15_2308983.ico</file>
+    <file>image/iconfinder_circle-add_226591.png</file>
+    <file>image/iconfinder_export-share-upload_2931143.png</file>
+    <file>image/iconfinder_import-download-save_2931171.png</file>
+    <file>image/iconfinder_minus-circle_2561243.png</file>
+    <file>image/iconfinder_network_sans_add_103649.png</file>
+    <file>image/iconfinder_UI_Basic_GLYPH-73_4733351.png</file>
+  </qresource>
+</RCC>

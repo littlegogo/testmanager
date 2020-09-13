@@ -458,7 +458,7 @@
                 <string>删除步骤</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="icon.qrc">
                  <normaloff>:/image/image/iconfinder_minus-circle_2561243.png</normaloff>:/image/image/iconfinder_minus-circle_2561243.png</iconset>
                </property>
               </widget>
@@ -469,7 +469,7 @@
                 <string>添加步骤</string>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="icon.qrc">
                  <normaloff>:/image/image/iconfinder_circle-add_226591.png</normaloff>:/image/image/iconfinder_circle-add_226591.png</iconset>
                </property>
                <property name="iconSize">
@@ -677,7 +677,7 @@
         <string>添加/更新用例(&amp;A)</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="icon.qrc">
          <normaloff>:/image/image/iconfinder_network_sans_add_103649.png</normaloff>:/image/image/iconfinder_network_sans_add_103649.png</iconset>
        </property>
        <property name="iconSize">
@@ -700,7 +700,7 @@
         <string>删除所选用例(&amp;D)</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="icon.qrc">
          <normaloff>:/image/image/iconfinder_UI_Basic_GLYPH-73_4733351.png</normaloff>:/image/image/iconfinder_UI_Basic_GLYPH-73_4733351.png</iconset>
        </property>
        <property name="shortcut">
@@ -714,7 +714,7 @@
         <string>导出所选用例(&amp;E)</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="icon.qrc">
          <normaloff>:/image/image/iconfinder_export-share-upload_2931143.png</normaloff>:/image/image/iconfinder_export-share-upload_2931143.png</iconset>
        </property>
        <property name="shortcut">
@@ -728,7 +728,7 @@
         <string>导入用例(&amp;I)</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="icon.qrc">
          <normaloff>:/image/image/iconfinder_import-download-save_2931171.png</normaloff>:/image/image/iconfinder_import-download-save_2931171.png</iconset>
        </property>
        <property name="shortcut">
@@ -742,7 +742,7 @@
         <string>生成文档(&amp;G)</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="icon.qrc">
          <normaloff>:/image/image/iconfinder_15_2134065.png</normaloff>:/image/image/iconfinder_15_2134065.png</iconset>
        </property>
        <property name="shortcut">
@@ -786,6 +786,8 @@
   <tabstop>generate_doc_button</tabstop>
   <tabstop>selectall_checkbox</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="icon.qrc"/>
+ </resources>
  <connections/>
 </ui>
