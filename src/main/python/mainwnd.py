@@ -1,6 +1,6 @@
 import json
 from Ui_cranetestdoc import Ui_CraneTestDocWnd
-from PyQt5 import QtWidgets, QtCore
+from  PyQt5 import QtWidgets, QtCore
 
 from PyQt5.QtWidgets import QDialog, QFileDialog
 from PyQt5.QtWidgets import QTreeWidgetItem, QTreeWidgetItemIterator, QMessageBox, QTableWidgetItem
@@ -63,6 +63,14 @@ class CraneTestDocWnd(QDialog, Ui_CraneTestDocWnd):
         self.remove_procdure_button.clicked.connect(self.on_remove_test_procdure)
         # 树形列表选择改变
         self.testcase_tree.currentItemChanged.connect(self.on_current_changed)
+    
+    def closeEvent(self, event):
+        if QMessageBox.question(self, '提示', '是否退出，退出前请导出用例', QMessageBox.Yes|QMessageBox.Cancel, QMessageBox.Cancel) == QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
+
+        
 
     def clear_case_content(self):
         """
