@@ -61,6 +61,9 @@ class CraneTestDocWnd(QDialog, Ui_CraneTestDocWnd):
         # 添加/删除测试步骤按钮
         self.add_procedure_button.clicked.connect(self.on_add_test_procdure)
         self.remove_procdure_button.clicked.connect(self.on_remove_test_procdure)
+        # 上移/下移测试步骤按钮
+        self.btnUp.clicked.connect(self.on_BtnUp)
+        self.btnDown.clicked.connect(self.on_BtnDown)
         # 树形列表选择改变
         self.testcase_tree.currentItemChanged.connect(self.on_current_changed)
     
@@ -69,6 +72,35 @@ class CraneTestDocWnd(QDialog, Ui_CraneTestDocWnd):
             event.accept()
         else:
             event.ignore()
+
+    # 上移按钮单击事件
+    def on_BtnUp(self):
+        row_count = self.test_procedure_tabel.rowCount()
+        current_row = self.test_procedure_tabel.currentRow();
+        old_col = self.test_procedure_tabel.currentItem().column();
+        if(current_row != 0):
+            self._swap_row(current_row, current_row-1)
+            self.test_procedure_tabel.setCurrentCell(current_row-1, old_col)            
+        else:
+            pass
+
+    # 下移按单击事件
+    def on_BtnDown(self):
+        row_count = self.test_procedure_tabel.rowCount()
+        current_row = self.test_procedure_tabel.currentRow();
+        old_col = self.test_procedure_tabel.currentItem().column();
+        if(current_row != row_count -1):
+            self._swap_row(current_row, current_row+1)
+            self.test_procedure_tabel.setCurrentCell(current_row+1, old_col)            
+        else:
+            pass
+
+    def _swap_row(self, row1, row2):
+        for col in range(1, 6):
+            value1 = self.test_procedure_tabel.item(row1, col).text();
+            value2 = self.test_procedure_tabel.item(row2, col).text();
+            self.test_procedure_tabel.item(row1, col).setText(value2);
+            self.test_procedure_tabel.item(row2, col).setText(value1);
 
         
 
@@ -230,6 +262,8 @@ class CraneTestDocWnd(QDialog, Ui_CraneTestDocWnd):
         row_count = self.test_procedure_tabel.rowCount()
         self.test_procedure_tabel.insertRow(row_count)
         self.test_procedure_tabel.setItem(row_count, 0, QTableWidgetItem(str(row_count+1)))
+        for col in range(1, 6):
+            self.test_procedure_tabel.setItem(row_count, col, QTableWidgetItem('无'))
 
     def on_remove_test_procdure(self):
         current_index = self.test_procedure_tabel.currentIndex()
