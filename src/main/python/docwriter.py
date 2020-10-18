@@ -430,7 +430,8 @@ class DocWriter:
 
     def write_doc(self, keys, test_cases, process_progressbar):
 
-        process_progressbar.setMaximum(len(keys))
+        mx = len(keys) if len(keys) > 0 else 1
+        process_progressbar.setMaximum(mx)
         process_progressbar.setMinimum(0)
         result_list  = []
         try:
@@ -444,6 +445,7 @@ class DocWriter:
                 self.__write_report_doc(test_case)
                 result_list.append([test_case.case_name, test_case.case_mark])
                 process_progressbar.setValue(row_index+1)
+            process_progressbar.setValue(mx)
             self.__write_result(result_list)            
         except Exception as e:
             print(f'write test case error{e}')
