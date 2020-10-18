@@ -1,6 +1,7 @@
 import json
 from Ui_cranetestdoc import Ui_CraneTestDocWnd
 from  PyQt5 import QtWidgets, QtCore
+import os
 
 from PyQt5.QtWidgets import QDialog, QFileDialog
 from PyQt5.QtWidgets import QTreeWidgetItem, QTreeWidgetItemIterator, QMessageBox, QTableWidgetItem
@@ -400,6 +401,7 @@ class CraneTestDocWnd(QDialog, Ui_CraneTestDocWnd):
         doc_writer = DocWriter(export_item_keys, self.test_cases, self.config, self.config[TEST_OUT_DIR])
         doc_writer.write_doc(export_item_keys, self.test_cases, self.process_progressbar)
         doc_writer.save_doc()
+        os.startfile(out_dir)
     
     def on_CaseUp(self):
         """
