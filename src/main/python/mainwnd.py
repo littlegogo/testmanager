@@ -1,6 +1,7 @@
 import json
 from Ui_cranetestdoc import Ui_CraneTestDocWnd
 from  PyQt5 import QtWidgets, QtCore
+import os
 
 from PyQt5.QtWidgets import QDialog, QFileDialog
 from PyQt5.QtWidgets import QTreeWidgetItem, QTreeWidgetItemIterator, QMessageBox, QTableWidgetItem
@@ -12,6 +13,7 @@ TEST_CAT_KEY = 'test_category'
 TEST_PERSON_KEY = 'test_persons'
 TEST_ENV_KEY = 'test_environment'
 TEST_REQ_METHOD_KEY = 'qualified_method'
+TEST_OUT_DIR = "doc_out_dir"
 
 class CraneTestDocWnd(QDialog, Ui_CraneTestDocWnd):
     def __init__(self):
@@ -28,6 +30,7 @@ class CraneTestDocWnd(QDialog, Ui_CraneTestDocWnd):
         """
         QDialog.__init__(self)
         Ui_CraneTestDocWnd.__init__(self)
+        self.setWindowFlags(self.windowFlags() | Qt.WindowMaximizeButtonHint | Qt.WindowMinimizeButtonHint)
         self.setupUi(self)
         self.testcase_tree.clear()
         # 初始化下拉框
@@ -66,9 +69,13 @@ class CraneTestDocWnd(QDialog, Ui_CraneTestDocWnd):
         self.btnDown.clicked.connect(self.on_BtnDown)
         # 树形列表选择改变
         self.testcase_tree.currentItemChanged.connect(self.on_current_changed)
+        # 用例顺序上移下移
+        self.caseUp.clicked.connect(self.on_CaseUp)
+        self.caseDown.clicked.connect(self.on_CaseDown)
     
     def closeEvent(self, event):
         if QMessageBox.question(self, '提示', '是否退出?退出前请导出用例', QMessageBox.Yes|QMessageBox.Cancel, QMessageBox.Cancel) == QMessageBox.Yes:
+            self.__saveConfig()
             event.accept()
         else:
             event.ignore()
@@ -364,19 +371,58 @@ class CraneTestDocWnd(QDialog, Ui_CraneTestDocWnd):
         except Exception as e:
             QMessageBox.warning(None, '提示', f'加载配置文件失败{str(e)}')
 
+    def __saveConfig(self):
+        """
+        保存配置文件
+        :return:
+        """
+        try:
+            with open('./data/config.json', encoding='utf-8', mode='w+') as f:
+                dat = json.dumps(self.config, sort_keys=True, indent=4, separators=(',', ': '), ensure_ascii=False)
+                f.write(dat)
+        except Exception as e:
+            QMessageBox.warning(None, '提示', f'保存配置文件失败{str(e)}')
+
     def on_generate_doc(self):
         """
         导出按钮点击事件处理
         :return:
         """
-        generate_dir = QFileDialog.getExistingDirectory(self, '选择生成文档的存储目录', '.')
-        if not generate_dir:
+        out_dir = self.config.get(TEST_OUT_DIR, ".")
+        out_dir = QFileDialog.getExistingDirectory(self, '选择生成文档的存储目录', out_dir)
+        if not out_dir:
             return
 
+        self.config[TEST_OUT_DIR] = out_dir
         export_item_keys = []
         for i in range(0, self.testcase_tree.topLevelItemCount()):
             if self.testcase_tree.topLevelItem(i).checkState(0) == Qt.Checked:
                 export_item_keys.append(self.testcase_tree.topLevelItem(i).text(0))
-        doc_writer = DocWriter(export_item_keys, self.test_cases, self.config, generate_dir)
+        doc_writer = DocWriter(export_item_keys, self.test_cases, self.config, self.config[TEST_OUT_DIR])
         doc_writer.write_doc(export_item_keys, self.test_cases, self.process_progressbar)
         doc_writer.save_doc()
+        os.startfile(out_dir)
+    
+    def on_CaseUp(self):
+        """
+        用例上移按钮点击事件处理
+        :return:
+        """
+        cur_idx = self.testcase_tree.currentIndex()
+        cur_case = self.testcase_tree.currentItem()
+        above_case = self.testcase_tree.itemAbove(cur_case)
+        if above_case :
+            self.testcase_tree.takeTopLevelItem(cur_idx.row() - 1)
+            self.testcase_tree.insertTopLevelItem(cur_idx.row(), above_case)
+ 
+    def on_CaseDown(self):
+        """
+        用例下移按钮点击事件处理
+        :return:
+        """
+        cur_idx = self.testcase_tree.currentIndex()
+        cur_case = self.testcase_tree.currentItem()
+        below_case = self.testcase_tree.itemBelow(cur_case)
+        if below_case :
+            self.testcase_tree.takeTopLevelItem(cur_idx.row() + 1)
+            self.testcase_tree.insertTopLevelItem(cur_idx.row(), below_case)
